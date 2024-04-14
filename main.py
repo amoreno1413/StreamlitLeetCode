@@ -24,7 +24,7 @@ if prompt := st.chat_input():
         st.stop()
 
     client = OpenAI(api_key=openai_api_key)
-    st.session_state.messages.append({"role": "system", "content": "You are a coding assisstant Using the code "
+    st.session_state.messages.append({"role": "system", "content": "You are a coding assisstant. Using the code "
                                                                    "provided by the user, "
                                       "you will generate the next line of code needed that will guide the user to"
                                       " the solution. You are not to give the user the entire solution, but "
@@ -34,15 +34,14 @@ if prompt := st.chat_input():
                                       " solution from leetcode. Whenever you give the user a line of code, you are to"
                                       "explain why that line of code will help the user, as well as provide a hint to "
                                                                    "the "
-                                      " next line of code that the user will need, but do not provide that line. If the"
+                                      " next line of code that the user will need. If the"
                                       "user replies with 'next' you will repeat the actions above. If no code is "
                                                                    "provided, "
                                       "you are to remind the user to provide their code. If only the question is "
                                                                    "provided, "
                                       "you will give the user a single line of code to start them off, as well as why "
                                                                    "that "
-                                      " line is necessary, and a hint as to what to do next. Remember, you are never to"
-                                      " the entire correct solution, only give them the correct solution line by line."
+                                      " line is necessary, and a hint as to what to do next."
                                       })
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
